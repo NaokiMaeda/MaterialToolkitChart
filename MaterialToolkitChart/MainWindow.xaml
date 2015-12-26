@@ -20,17 +20,37 @@
         
         
     </Window.Resources>
-
     
-    <StackPanel>
-        <ToggleButton>
-            
-        </ToggleButton>
+    <materialDesign:DialogHost Identifier="RootDialog">
+        <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked}">
 
-        <TextBox Grid.Row="0" Grid.Column="1"
-                 materialDesign:TextFieldAssist.Hint="Name">
-        </TextBox>
-        
-    </StackPanel>
-    
+            <DockPanel>
+                <materialDesign:ColorZone Padding="16" materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                                          Mode="PrimaryMid" DockPanel.Dock="Top">
+                    <DockPanel>
+                        <ToggleButton   x:Name="MenuToggleButton" DockPanel.Dock="Left"
+                                        Style="{StaticResource MaterialDesignHamburgerToggleButton}"
+                                        IsChecked="False"/>
+                        <TextBlock      HorizontalAlignment="Center" 
+                                        VerticalAlignment="Center" 
+                                        FontSize="22">Material Toolkit Chart
+                        </TextBlock>
+                    </DockPanel>
+                </materialDesign:ColorZone>
+                <ContentControl Margin="16" Content="{Binding ElementName=DemoItemsListBox, Path=SelectedItem.Content}" />
+            </DockPanel>
+
+            <materialDesign:DrawerHost.LeftDrawerContent>
+                <StackPanel Orientation="Vertical">
+                    <ToggleButton   HorizontalAlignment="Right" Margin="16"
+                                    Style="{StaticResource MaterialDesignHamburgerToggleButton}" 
+                                    IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}" />
+                    <ListBox x:Name="DemoItemsListBox" Margin="0 16 0 16" SelectedIndex="0">
+                        <TextBox    FontSize="14">Item1</TextBox>
+                    </ListBox>
+                </StackPanel>
+            </materialDesign:DrawerHost.LeftDrawerContent>
+
+        </materialDesign:DrawerHost>
+    </materialDesign:DialogHost>
 </Window>
