@@ -3,6 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:visualizationToolkit="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit" 
+        xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit" 
         Title="MainWindow" Height="720" Width="1280"
         xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -24,9 +26,10 @@
     <materialDesign:DialogHost Identifier="RootDialog">
         <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked}">
 
-            <DockPanel>
+            <StackPanel Orientation="Vertical">
+                <!--タイトル部分-->
                 <materialDesign:ColorZone Padding="16" materialDesign:ShadowAssist.ShadowDepth="Depth2"
-                                          Mode="PrimaryMid" DockPanel.Dock="Top">
+                                          Mode="Dark">
                     <DockPanel>
                         <ToggleButton   x:Name="MenuToggleButton" DockPanel.Dock="Left"
                                         Style="{StaticResource MaterialDesignHamburgerToggleButton}"
@@ -37,8 +40,25 @@
                         </TextBlock>
                     </DockPanel>
                 </materialDesign:ColorZone>
-                <ContentControl Margin="16" Content="{Binding ElementName=DemoItemsListBox, Path=SelectedItem.Content}" />
-            </DockPanel>
+
+                <StackPanel Orientation="Vertical">
+                    <materialDesign:Card    Margin="4 4 0 0"  
+                                            Background="Azure"
+                                            Padding="8"
+                                            Width="400" Height="300"
+                                            >
+                        <chartingToolkit:Chart>
+                            <chartingToolkit:LineSeries 
+                                x:Name="DataView"
+                                IndependentValuePath="value"
+                                DependentValuePath="year">
+                            
+                        </chartingToolkit:LineSeries>
+                        </chartingToolkit:Chart>
+                    </materialDesign:Card>
+                </StackPanel>
+                
+            </StackPanel>
 
             <materialDesign:DrawerHost.LeftDrawerContent>
                 <StackPanel Orientation="Vertical">
