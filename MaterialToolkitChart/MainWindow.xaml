@@ -48,6 +48,19 @@
                                             Width="400" Height="300"
                                             >
                         <chartingToolkit:Chart>
+                            <chartingToolkit:Chart.Axes>
+                                <chartingToolkit:LinearAxis
+                                    Orientation="X"
+                                    Minimum="0"
+                                    Maximum="500"
+                                    />
+                                <chartingToolkit:LinearAxis
+                                    Orientation="Y"
+                                    Minimum="2000"
+                                    Maximum="2020"
+                                    />
+                            </chartingToolkit:Chart.Axes>
+
                             <chartingToolkit:LineSeries 
                                 x:Name="DataView"
                                 IndependentValuePath="value"
