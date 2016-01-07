@@ -1,6 +1,7 @@
 ﻿<Window x:Class="MaterialToolkitChart.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:layoutDomain ="clr-namespace:MaterialToolkitChart.LayoutDomain"
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:visualizationToolkit="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit" 
@@ -40,37 +41,7 @@
                         </TextBlock>
                     </DockPanel>
                 </materialDesign:ColorZone>
-
-                <StackPanel Orientation="Vertical">
-                    <materialDesign:Card    Margin="4 4 0 0"  
-                                            Background="Azure"
-                                            Padding="8"
-                                            Width="400" Height="300"
-                                            >
-                        <chartingToolkit:Chart>
-                            <chartingToolkit:Chart.Axes>
-                                <chartingToolkit:LinearAxis
-                                    Orientation="X"
-                                    Minimum="0"
-                                    Maximum="500"
-                                    />
-                                <chartingToolkit:LinearAxis
-                                    Orientation="Y"
-                                    Minimum="2000"
-                                    Maximum="2020"
-                                    />
-                            </chartingToolkit:Chart.Axes>
-
-                            <chartingToolkit:LineSeries 
-                                x:Name="DataView"
-                                IndependentValuePath="value"
-                                DependentValuePath="year">
-                            
-                        </chartingToolkit:LineSeries>
-                        </chartingToolkit:Chart>
-                    </materialDesign:Card>
-                </StackPanel>
-                
+                <ContentControl Content="{Binding ElementName=DemoItemsListBox,Path=SelectedItem.Content}" />
             </StackPanel>
 
             <materialDesign:DrawerHost.LeftDrawerContent>
@@ -78,8 +49,18 @@
                     <ToggleButton   HorizontalAlignment="Right" Margin="16"
                                     Style="{StaticResource MaterialDesignHamburgerToggleButton}" 
                                     IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}" />
-                    <ListBox x:Name="DemoItemsListBox" Margin="0 16 0 16" SelectedIndex="0">
-                        <TextBox    FontSize="14">Item1</TextBox>
+                    <ListBox x:Name="DemoItemsListBox" Margin="0 16 0 16" SelectedIndex="0"
+                             PreviewMouseLeftButtonUp="UIElement_OnPreviewMouseButtonUp">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate   DataType= "layoutDomain:ModeView">
+                                <TextBlock  Text="{Binding Name}"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                        <layoutDomain:ModeView  Name="Home">
+                            <layoutDomain:ModeView.Content>
+                                <layoutDomain:Home/>
+                            </layoutDomain:ModeView.Content>
+                        </layoutDomain:ModeView>
                     </ListBox>
                 </StackPanel>
             </materialDesign:DrawerHost.LeftDrawerContent>
