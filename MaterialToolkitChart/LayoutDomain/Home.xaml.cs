@@ -19,7 +19,11 @@ namespace MaterialToolkitChart.LayoutDomain {
 	/// </summary>
 	public partial class Home : UserControl {
 		public Home() {
-		InitializeComponent();
+			InitializeComponent();
+			Queue<Data> list = new Queue<Data>();
+			list.Enqueue(new Data());
+			list.Enqueue(new Data(200, 2017));
+			this.DataView.ItemsSource = list;
 		}
 	}
 }

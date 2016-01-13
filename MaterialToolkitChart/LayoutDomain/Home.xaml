@@ -10,44 +10,50 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
 
-    <UserControl.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </UserControl.Resources>
+	<UserControl.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
 
-    <StackPanel Orientation="Vertical">
-        <materialDesign:Card    Margin="4 4 0 0"  
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</UserControl.Resources>
+
+	<StackPanel Orientation="Vertical">
+		<materialDesign:Card    Margin="4 4 0 0"  
                                             Background="Azure"
                                             Padding="8"
                                             Width="400" Height="300"
                                             >
-            <chartingToolkit:Chart>
-                <chartingToolkit:Chart.Axes>
-                    <chartingToolkit:LinearAxis
+			<chartingToolkit:Chart>
+				<chartingToolkit:Chart.LegendStyle>
+					<Style	TargetType="Control">
+						<Setter	Property="Width"	Value="10"/>
+						<Setter	Property="Opacity"	Value="0"/>
+					</Style>
+				</chartingToolkit:Chart.LegendStyle>
+				<chartingToolkit:Chart.Axes>
+					<chartingToolkit:LinearAxis
                                     Orientation="X"
                                     Minimum="0"
                                     Maximum="500"
                                     ShowGridLines="True"
                                     />
-                    <chartingToolkit:LinearAxis
+					<chartingToolkit:LinearAxis
                                     Orientation="Y"
                                     Minimum="2000"
                                     Maximum="2020"
                                     ShowGridLines="True"
                                     />
-                </chartingToolkit:Chart.Axes>
+				</chartingToolkit:Chart.Axes>
 
-                <chartingToolkit:LineSeries 
+				<chartingToolkit:LineSeries 
                                 x:Name="DataView"
                                 IndependentValuePath="value"
                                 DependentValuePath="year">
 
-                </chartingToolkit:LineSeries>
-            </chartingToolkit:Chart>
-        </materialDesign:Card>
-    </StackPanel>
+				</chartingToolkit:LineSeries>
+			</chartingToolkit:Chart>
+		</materialDesign:Card>
+	</StackPanel>
 
 </UserControl>

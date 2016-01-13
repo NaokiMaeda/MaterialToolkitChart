@@ -61,6 +61,11 @@
                                 <layoutDomain:Home/>
                             </layoutDomain:ModeView.Content>
                         </layoutDomain:ModeView>
+						<layoutDomain:ModeView	Name="MetroChart">
+							<layoutDomain:ModeView.Content>
+								<layoutDomain:ModernUI/>
+							</layoutDomain:ModeView.Content>
+						</layoutDomain:ModeView>
                     </ListBox>
                 </StackPanel>
             </materialDesign:DrawerHost.LeftDrawerContent>
