@@ -1,20 +1,33 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace MaterialToolkitChart.LayoutDomain {
 	/// <summary>
 	/// ModernUI.xaml の相互作用ロジック
 	/// </summary>
-	public partial class ModernUI : UserControl {
+	public partial class ModernUI : UserControl{
+        private List<PieData> pieList;
 		public ModernUI() {
 			InitializeComponent();
-			//var pieList = new ObservableCollection<PieData>();
-			Queue<PieData>	pieList = new Queue<PieData>();
-			pieList.Enqueue(new PieData());
-			pieList.Enqueue(new PieData("JS" , 25));
+            pieList = new List<PieData>();
+			pieList.Add(new PieData());
+			pieList.Add(new PieData("JS" , 25));
 			this.PieChart.ItemsSource = pieList;
+            pieList.Add(new PieData("Python", 100));
+            LoopChanger();
 		}
-	}
+
+        private async void LoopChanger() {
+            while (true) {
+                await Task.Delay(1000);
+                pieList[2].value = DateTime.Now.Second;
+            }
+        }
+
+    }
 }

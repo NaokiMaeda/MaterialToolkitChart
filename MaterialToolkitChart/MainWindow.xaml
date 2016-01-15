@@ -56,7 +56,7 @@
                                 <TextBlock  Text="{Binding Name}"/>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
-                        <layoutDomain:ModeView  Name="Home">
+                        <layoutDomain:ModeView	x:Name="HomeLayout"	Name="Home">
                             <layoutDomain:ModeView.Content>
                                 <layoutDomain:Home/>
                             </layoutDomain:ModeView.Content>

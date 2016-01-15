@@ -14,7 +14,6 @@ namespace MaterialToolkitChart {
             Queue<Data> list = new Queue<Data>();
             list.Enqueue(new Data());
             list.Enqueue(new Data(200, 2017));
-
         }
 
 		private void UIElement_OnPreviewMouseButtonUp(object sender, MouseButtonEventArgs e) {
