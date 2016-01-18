@@ -18,11 +18,25 @@ namespace MaterialToolkitChart
     /// <summary>
     /// MainWindow.xaml の相互作用ロジック
     /// </summary>
-    public partial class MainWindow : Window
-    {
-        public MainWindow()
-        {
-            InitializeComponent();
+    public partial class MainWindow : Window{
+		private List<PieData>	PieList;
+        public MainWindow(){
+			InitializeComponent();
+			PieList = new List<PieData>();
+			PieList.Add(new PieData("Java" , 65));
+			PieList.Add(new PieData("JavaScript" , 25));
+			
+			this.PieChart.ItemsSource = PieList;
+			PieList.Add(new PieData("Python", 10));
+			Looper();
         }
+
+		private async void Looper() {
+			while(true) {
+				await Task.Delay(1000);
+				PieList[2].Value = DateTime.Now.Second;
+				Console.WriteLine(PieList[2].Value);
+			}
+		}
     }
 }

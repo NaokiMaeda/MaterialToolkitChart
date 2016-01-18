@@ -4,9 +4,26 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MaterialToolkitChart"
+		xmlns:GAChart="clr-namespace:GravityApps.Mandelkow.MetroCharts;assembly=GravityApps.Mandelkow.MetroCharts"
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1280">
     <Grid>
-        
+		<StackPanel>
+			<GAChart:PieChart
+				ChartTitle="Pie Chart"
+				Width="350"
+				Height="400"
+				>
+				<GAChart:PieChart.Series>
+					<GAChart:ChartSeries
+						x:Name="PieChart"
+						SeriesTitle		= "AAA"
+						DisplayMember	= "Key"
+						ValueMember		= "Value"
+						
+						/>
+				</GAChart:PieChart.Series>
+			</GAChart:PieChart>
+		</StackPanel>
     </Grid>
 </Window>

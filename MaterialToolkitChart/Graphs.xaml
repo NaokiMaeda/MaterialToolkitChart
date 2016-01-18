@@ -1,6 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:GAGraph="clr-namespace:GravityApps.Mandelkow.MetroCharts;assembly=GravityApps.Mandelkow.MetroCharts">
+					xmlns:chart="using:GravityApps.Mandelkow.MetroCharts"
+                    xmlns:GAGraph="clr-namespace:GravityApps.Mandelkow.MetroCharts;assembly=GravityApps.Mandelkow.MetroCharts"
+					>
  
     
         <!-- for windows 8 it is different: xmlns:chart="using:GravityApps.Mandelkow.MetroCharts" -->
