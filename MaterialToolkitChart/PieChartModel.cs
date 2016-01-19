@@ -1,16 +1,15 @@
-﻿using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+﻿using GalaSoft.MvvmLight;
+using System;
 
 namespace MaterialToolkitChart {
-	class PieChartModel : INotifyPropertyChanged {
+    class PieChartModel : ViewModelBase {
 		private	String	_Name;
 		public	String	Name {
 			get {return	_Name;}
 			set {
 				if(_Name != value) {
 					_Name = value;
-					NotifyPropertyChange("Name");
+                    RaisePropertyChanged(nameof(Name));
 				}
 			}
 		}
@@ -21,14 +20,9 @@ namespace MaterialToolkitChart {
 			set {
 				if(_Value != value) {
 					_Value = value;
-					NotifyPropertyChange("Value");
+                    RaisePropertyChanged(nameof(Value));
 				}
 			}
-		}
-
-		public event PropertyChangedEventHandler PropertyChanged;
-		private	void NotifyPropertyChange([CallerMemberName]String propertyName = null) {
-			PropertyChanged?.Invoke(this , new PropertyChangedEventArgs(propertyName));
 		}
 	}
 }

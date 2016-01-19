@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿using GalaSoft.MvvmLight;
+using System;
 
 namespace MaterialToolkitChart {
-	class PieData : INotifyPropertyChanged{
+    class PieData :ViewModelBase{
 		private	String _Key;
 		public	String Key{
 			get {return _Key;}
 			set{
 				_Key = value;
-				NotifyPropertyChanged("Key");
+                RaisePropertyChanged(nameof(Key));
 			}
 		}
 
@@ -22,7 +17,7 @@ namespace MaterialToolkitChart {
 			get {return _Value;}
 			set{
 				_Value = value;
-				NotifyPropertyChanged("Value");
+				RaisePropertyChanged(nameof(Value));
 			}
 		}
 
@@ -34,13 +29,6 @@ namespace MaterialToolkitChart {
 		public	PieData(String name , int value) {
 			this.Key = name;
 			this.Value = value;
-		}
-
-		public event PropertyChangedEventHandler PropertyChanged;
-		private void NotifyPropertyChanged([CallerMemberName] String propertyName="") {
-			if(PropertyChanged != null) {
-				PropertyChanged(this , new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 }
