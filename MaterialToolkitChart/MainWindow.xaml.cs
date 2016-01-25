@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 
 namespace MaterialToolkitChart {
     /// <summary>
@@ -7,7 +8,12 @@ namespace MaterialToolkitChart {
     public partial class MainWindow : Window{
         public MainWindow(){
 			InitializeComponent();
-			PieChartViewModel model = new PieChartViewModel();
+            PieDataList list = new PieDataList();
+            list.listName = "DataList100";
+            this.PieChart.SeriesTitle = list.listName;
+            this.PieChart.ItemsSource = list.items;
+            Console.WriteLine(PieChart.SeriesTitle);
+            Console.WriteLine(PieChart.HasItems);
         }
     }
 }

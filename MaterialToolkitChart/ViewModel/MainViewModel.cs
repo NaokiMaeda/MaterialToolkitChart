@@ -1,4 +1,5 @@
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 
 namespace MaterialToolkitChart.ViewModel
 {
@@ -14,11 +15,40 @@ namespace MaterialToolkitChart.ViewModel
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    public class MainViewModel : ViewModelBase
-    {
+    public class MainViewModel : ViewModelBase{
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
+
+        private PieDataList _list;
+        public  PieDataList list {
+            get { return _list; }
+            set {
+                if (_list != value) {
+                    _list = value;
+                    RaisePropertyChanged(nameof(list));
+                }
+            }
+        }
+
+        public RelayCommand SwitchSeries {
+            get;
+            private set;
+        }
+
+        private bool _seriesSwitched;
+        public bool seriesSwitched {
+            get {
+                return _seriesSwitched;
+            }
+            set {
+                if (_seriesSwitched != value) {
+                    _seriesSwitched = value;
+                    RaisePropertyChanged(nameof(seriesSwitched));
+                }
+            }
+        }
+
         public MainViewModel()
         {
             ////if (IsInDesignMode)
@@ -29,6 +59,22 @@ namespace MaterialToolkitChart.ViewModel
             ////{
             ////    // Code runs "for real"
             ////}
+
+            SwitchSeries = new RelayCommand(() => switchSeries());
+            seriesSwitched = false;
+
+            list = new PieDataList();
+            list.listName = "Data21";
+            list.items.Add(new PieData("mk.1", 10));
+            list.items.Add(new PieData("mk.2", 11));
+            list.items.Add(new PieData("mk.3", 15));
+            list.items.Add(new PieData("mk.4", 20));
+            list.items.Add(new PieData("mk.5", 26));
+            list.items.Add(new PieData("mk.6", 16));
+        }
+
+        private void switchSeries() {
+            seriesSwitched = !seriesSwitched;
         }
     }
 }

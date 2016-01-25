@@ -2,7 +2,7 @@
 using System;
 
 namespace MaterialToolkitChart {
-    class PieData :ViewModelBase{
+    public class PieData :ViewModelBase{
 		private	String _Key;
 		public	String Key{
 			get {return _Key;}
